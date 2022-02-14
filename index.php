@@ -1,5 +1,5 @@
 <?php
-$test;
+
 session_start();
 require('library.php');
 $db = dbconnect();
