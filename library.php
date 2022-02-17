@@ -6,15 +6,10 @@ function html($value) {
 
 // 
 function dbconnect(){
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-    $url['dbname'] = ltrim($url['path'], '/');
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"], 1);
-
-    $db = new mysqli($server, $username, $password, $db);
+    $db = new mysqli('localhost', 'root', 'root', 'pdca');
+    if (!$db) {
+        die($db->error);
+    }
 
     return $db;
 }
