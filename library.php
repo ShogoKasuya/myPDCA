@@ -6,7 +6,7 @@ function html($value) {
 
 // 
 function dbconnect(){
-    $db = new mysqli('localhost', 'root', 'root', 'pdca');
+    $db = new mysqli('mysql551.phy.lolipop.lan', 'LA10717358', 'TnrYYo8hKo', 'LA10717358-ke59yr');
     if (!$db) {
         die($db->error);
     }

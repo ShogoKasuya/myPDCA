@@ -1,7 +1,5 @@
 <?php
 session_start();
-require('library.php');
-$db = dbconnect();
 
 if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     $id = $_SESSION['id'];
@@ -29,6 +27,9 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit();
 }
+
+require('library.php');
+$db = dbconnect();
 ?>
 <!DOCTYPE html>
 <html lang="ja">

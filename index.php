@@ -1,9 +1,5 @@
 <?php
-
 session_start();
-require('library.php');
-$db = dbconnect();
-
 if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     $member_id = $_SESSION['id'];
     $name = $_SESSION['name'];
@@ -11,8 +7,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     header('Location: login.php');
     exit();
 }
+
+require('library.php');
+$db = dbconnect();
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>ω
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
