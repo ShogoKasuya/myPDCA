@@ -15,7 +15,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDCA</title>
+    <title>myPDCA</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">PDCA</a>
+                <a class="navbar-brand" href="index.php">myPDCA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -68,47 +68,47 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     <div class="container">
         <div class="row"> 
             <div class="col-8 offset-2">  
-                <p class="text-center">PDCA名:<?php echo html($title); ?></p>
-                <p class="text-center">抱えている課題:<?php echo html($theme); ?></p>
+                <p class="text-center"><span style="font-weight: bold;">PDCA名</span>：<?php echo html($title); ?></p>
+                <p class="text-center"><span style="font-weight: bold;">抱えている課題</span>：<?php echo html($theme); ?></p>
                 <form action="edit_do.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
-                    <div class="d-flex justify-content-around">
+                    <div class="mt-5 d-flex justify-content-around">
                         <div class="m-4"> 
-                            <label class="form-label" for="">Plan-計画-</label>
+                            <label class="form-label" style="font-weight: bold;">Plan-計画-</label>
                             <textarea class="form-control" name="plan" id="" cols="30" rows="7"><?php echo html($plan); ?></textarea>
                         </div>
                         <!-- ここから矢印 --> 
                         <div style="margin-top: 130px;">  
-                            <i class="fas fa-angle-right"></i>
+                            <i class="fas fa-angle-right" style="color: red;"></i>
                         </div>
                         <!-- ここまで矢印 --> 
                         <div class="m-4"> 
-                            <label class="form-label" for="">Do-実行-</label>
+                            <label class="form-label" style="font-weight: bold;">Do-実行-</label>
                             <textarea class="form-control" name="do" id="" cols="30" rows="7"><?php echo html($do); ?></textarea>
                         </div>
                     </div>
                     <!-- ここから矢印 --> 
                     <div class="d-flex justify-content-around">
                         <div class="mt-3 me-5">
-                            <i class="fas fa-angle-up"></i>
+                            <i class="fas fa-angle-up" style="color: red;"></i>
                         </div>
                         <div class="mt-3 ms-5">
-                            <i class="fas fa-angle-down"></i> 
+                            <i class="fas fa-angle-down" style="color: red;"></i> 
                         </div>
                     </div>
                     <!-- ここまで矢印 --> 
                     <div class="d-flex justify-content-around">
                         <div class="m-4"> 
-                            <label class="form-label" for="">Action-改善-</label>
+                            <label class="form-label" style="font-weight: bold;">Action-改善-</label>
                             <textarea class="form-control" name="action" id="" cols="30" rows="7"><?php echo html($action); ?></textarea>
                         </div>
                         <!-- ここから矢印 --> 
                         <div style="margin-top: 130px;">  
-                            <i class="fas fa-angle-left"></i> 
+                            <i class="fas fa-angle-left" style="color: red;"></i> 
                         </div>
                         <!-- ここまで矢印 --> 
                         <div class="m-4"> 
-                            <label class="form-label" for="">Check-評価-</label>
+                            <label class="form-label" style="font-weight: bold;">Check-評価-</label>
                             <textarea class="form-control" name="checking" id="" cols="30" rows="7"><?php echo html($checking); ?></textarea>
                         </div>
                     </div>

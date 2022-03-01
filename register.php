@@ -1,5 +1,7 @@
 <?php
 session_start();
+require('library.php');
+$db = dbconnect();
 
 if (isset($_SESSION['id']) && isset($_SESSION['name'])){
     $id = $_SESSION['id'];
@@ -28,8 +30,6 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-require('library.php');
-$db = dbconnect();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -37,7 +37,7 @@ $db = dbconnect();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDCA</title>
+    <title>myPDCA</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -47,7 +47,7 @@ $db = dbconnect();
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">PDCA</a>
+                <a class="navbar-brand" href="index.php">myPDCA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -68,57 +68,57 @@ $db = dbconnect();
     </header>
 
     <!-- PDCA登録フォーム -->
-    <h2 class="text-center my-5">例のようにPDCAを作成しよう！</h2>
+    <h2 class="text-center my-5">枠内の例のようにPDCAを作成しよう！</h2>
     <div class="container">
         <div class="row">
             <div class="col-10 offset-1">
                 <form action="" method="post">
                     <div class="col-6 m-4">
                         <label class="form-label" for="">PDCAの題名と期限</label>
-                        <input class="form-control" name="title" type="text" placeholder="ダイエット　2/28">
+                        <input class="form-control" name="title" type="text" placeholder="ダイエット　3/31まで">
                     </div>
                     <div class="m-4">
                         <label class="form-label" for="">抱えている課題</label>
-                        <textarea class="form-control" name="theme" cols="30" rows="1" placeholder="1ヶ月で5kg太った。あせあせ"></textarea>
+                        <textarea class="form-control" name="theme" cols="30" rows="1" placeholder="毎日の間食のせいで1ヶ月で5kg太ってしまった。"></textarea>
                     </div>
                     <div class="d-flex justify-content-around">
                         <div class="m-4">
                             <label class="form-label" for="">Plan-計画-</label>
-                            <textarea class="form-control" name="plan" cols="30" rows="7" placeholder="運動量を増やして3kg痩せる。"></textarea>
+                            <textarea class="form-control" name="plan" cols="30" rows="7" placeholder="まずは1ヶ月に3kg痩せる。&#13;&#10;脂肪3kg=21,000kcal&#13;&#10;1日700kcalずつ減らす"></textarea>
                         </div>
                         <!-- ここから矢印 -->
                         <div style="margin-top: 130px;">
-                            <i class="fas fa-angle-right"></i>
+                            <i class="fas fa-angle-right" style="color: red;"></i>
                         </div>
                         <!-- ここまで矢印 -->
                         <div class="m-4">
                             <label class="form-label" for="">Do-実行-</label>
-                            <textarea class="form-control" name="do" cols="30" rows="7" placeholder="毎朝7kmのランニングをする。"></textarea>
+                            <textarea class="form-control" name="do" cols="30" rows="7" placeholder="毎朝30分のランニング=200kcal消費&#13;&#10;毎日の板チョコ1枚(400kcal)とドーナツ(300kcal)を板チョコ半分にする=500kcal減"></textarea>
                         </div>
                     </div>
                     <!-- ここから矢印 -->
                     <div class="d-flex justify-content-around">
                         <div class="mt-3 me-5">
-                            <i class="fas fa-angle-up"></i>
+                            <i class="fas fa-angle-up" style="color: red;"></i>
                         </div>
                         <div class="mt-3 ms-5">
-                            <i class="fas fa-angle-down"></i>
+                            <i class="fas fa-angle-down" style="color: red;"></i>
                         </div>
                     </div>
                     <!-- ここまで矢印 -->
                     <div class="d-flex justify-content-around">
                         <div class="m-4">
                             <label class="form-label" for="">Action-改善-</label>
-                            <textarea class="form-control" name="action" cols="30" rows="7" placeholder="最終週は3日間サボってしまい、あと0.8kgで目標達成だった。来月は食事制限を取り入れたい。"></textarea>
+                            <textarea class="form-control" name="action" cols="30" rows="7" placeholder="最終週は10日中3日サボってしまった。あと0.6kgで目標達成だった。来月は寒くなくなるのでランニング時間を10分増(トータル1980kcal)。"></textarea>
                         </div>
                         <!-- ここから矢印 -->
                         <div style="margin-top: 130px;">
-                            <i class="fas fa-angle-left"></i>
+                            <i class="fas fa-angle-left" style="color: red;"></i>
                         </div>
                         <!-- ここまで矢印 -->
                         <div class="m-4">
                             <label class="form-label" for="">Check-評価-</label>
-                            <textarea class="form-control" name="checking" cols="30" rows="7" placeholder="〜2/7:3日サボった&#13;&#10;〜2/14:1日サボった&#13;&#10;〜2/21:毎日走れた！&#13;&#10;あと1.4kg。。"></textarea>
+                            <textarea class="form-control" name="checking" cols="30" rows="7" placeholder="〜3/7:3日サボった(2800kcal消費)&#13;&#10;〜3/14:1日サボった(4200kcal消費)&#13;&#10;〜3/21:毎日できた(4900kcal消費)&#13;&#10;あと9100kcal消費！"></textarea>
                         </div>
                     </div>
                     <div class="text-center my-5">

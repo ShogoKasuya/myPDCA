@@ -11,13 +11,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['name'])){
 require('library.php');
 $db = dbconnect();
 ?>
-<!DOCTYPE html>ω
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDCA</title>
+    <title>myPDCA</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -27,7 +27,7 @@ $db = dbconnect();
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">PDCA</a>
+                <a class="navbar-brand" href="index.php">myPDCA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,13 +49,14 @@ $db = dbconnect();
 
     <!-- タスク一覧 -->
         <div class="m-5 text-center">
-            <p style="font-size: x-large;"><?php echo html($name); ?>さん、ようこそ！</p>
+            <p style="font-size: x-large;"><?php echo html($name); ?>さん、おかえりなさい！</p>
         </div>
     <div class="m-5 text-center">
         <button type="button" class="btn btn-primary" onclick="location.href='register.php'">PDCAを作成</button>
     </div>
 
     <!-- 一覧表示 -->
+    <h2 class="text-center">PDCAリスト</h2>
     <?php
     $stmt = $db->prepare('select p.id, title, theme, plan, do, checking, action, member_id from posts p, members m where m.id=p.member_id order by p.id desc');
     if(!$stmt){
@@ -67,14 +68,14 @@ $db = dbconnect();
     ?>
     <?php while ($stmt->fetch()):?>
     <?php if ($_SESSION['id'] === $member_id): ?>
-    <div class="container mt-3">
+    <div class="container">
         <div class="row">
             <div class="col-10 offset-1">
                 <div class="m-5 border rounded" style="height: 300px; position: relative;">
                     <p class="m-2">【<?php echo html($title); ?>】</p>
-                    <p class="mt-4 ms-2">抱えている課題：</p>
+                    <p class="mt-4 ms-2"><span style="font-weight: bold;">抱えている課題</span>：</p>
                     <p class="ps-2 m-2"><?php echo html($theme); ?></p>
-                    <p class="mt-4 ms-2">Do：</p>
+                    <p class="mt-4 ms-2"><span style="font-weight: bold;">Do：</span></p>
                     <p class="ps-2 ms-2"><?php echo html($do) ?></p>
                     <form action="detail.php?=<?php echo $id; ?>" method="get">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">

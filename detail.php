@@ -10,7 +10,7 @@ $db = dbconnect();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDCA</title>
+    <title>myPDCA</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -20,7 +20,7 @@ $db = dbconnect();
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">PDCA</a>
+                <a class="navbar-brand" href="index.php">myPDCA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,38 +61,38 @@ $db = dbconnect();
     <div class="container">
         <div class="row">
             <div class="col-8 offset-2">
-                <p class="text-center">PDCA名:<?php echo html($title); ?></p>
-                <p class="text-center">抱えている課題:<?php echo html($theme) ;?></p>
-                    <p>Plan-計画-</p>
+                <p class="text-center"><span  style="font-weight: bold;">PDCA名</span>：<?php echo html($title); ?></p>
+                <p class="mb-5 text-center"><span  style="font-weight: bold;">抱えている課題</span>：<?php echo html($theme) ;?></p>
+                    <p style="font-weight: bold;">Plan-計画-</p>
                     <div class="m-4 cols-4 border rounded">
                         <p><?php echo html($plan); ?></p>
                     </div>
                         <!-- ここから矢印 -->
                     <div class="mt-5 text-center">
-                        <i class="fas fa-angle-down"></i>
+                        <i class="fas fa-angle-down" style="color: red;"></i>
                     </div>
                     <!-- ここまで矢印 -->
-                    <p>Do-実行-</p>
+                    <p style="font-weight: bold;">Do-実行-</p>
                     <div class="m-4 cols-4 border rounded">
                         <p><?php echo html($do); ?></p>
                     </div>
                     <!-- ここから矢印 -->
                     <div class="mt-5 text-center">
-                        <i class="fas fa-angle-down"></i>
+                        <i class="fas fa-angle-down" style="color: red;"></i>
                     </div>
                     <!-- ここまで矢印 -->
-                    <p>Action-改善-</p>
+                    <p style="font-weight: bold;">Check-評価-</p>
                     <div class="m-4 cols-4 border rounded">
-                        <p><?php echo html($action); ?></p>
+                        <p><?php echo html($checking); ?></p>
                     </div>
                     <!-- ここから矢印 -->
                     <div class="mt-5 text-center">
-                        <i class="fas fa-angle-down"></i>
+                        <i class="fas fa-angle-down" style="color: red;"></i>
                     </div>
                     <!-- ここまで矢印 -->
-                    <p>Check-評価-</p>
+                    <p style="font-weight: bold;">Action-改善-</p>
                     <div class="m-4 cols-4 border rounded">
-                        <p><?php echo html($checking); ?></p>
+                        <p><?php echo html($action); ?></p>
                     </div>
                     <?php if ($_SESSION['id'] === $member_id): ?>
                     <form action="edit.php?id=<?php echo $id; ?>" method="post">

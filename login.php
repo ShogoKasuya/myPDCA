@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">PDCA</a>
+                <a class="navbar-brand" href="index.php">myPDCA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -67,8 +67,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- ログインフォーム -->
     <div class="container">
         <div class="row">
-            <h2 class="text-center mt-3">ようこそ！</h2>
-            <p class="text-center mt-3">既にユーザーの方はこちらからログインしてください。</p>
+            <div class="col-6 offset-3">
+                <h2 class="text-center mt-3">ようこそ！</h2>
+                <p class="text-center mt-3">既にユーザーの方はこちらからログインしてください。</p>
+                <p class="text-center mt-5">下記のアカウントでゲストユーザーとしてログインが可能でございます。</p>
+                <div class="my-5 border rounded">
+                    <p class="text-center"><span style="font-weight: bold;">メールアドレス</span>：shogo@email.com</p>
+                    <p class="text-center"><span style="font-weight: bold;">パスワード</span>：QFmJVQ4TIb</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container mt-3">
@@ -91,16 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" name="password" class="form-control" value="<?php echo html($password); ?>" id="exampleInputPassword1">
                         <div id="emailHelp" class="form-text">4文字以上の半角英数字</div>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">以降アカウント情報を保持する</label>
-                    </div>
                     <div class="text-center my-5">
                         <button type="submit" class="btn btn-primary">ログイン</button>
                     </div>
                 </form>
                 <div class="text-center my-5">
-                        <a type="button" class="btn btn-success" href="join/">新規登録</a>
+                        <a type="button" class="btn btn-success" href="join/">新規登録はこちら</a>
                 </div>
             </div>
         </div>
